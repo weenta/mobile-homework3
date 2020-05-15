@@ -1,5 +1,6 @@
 package thoughtworks.training.m05.ui
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -68,10 +69,6 @@ class GoodsViewModel : ViewModel() {
     private fun addItemToShoppingCart(item: ShoppingCartItem) {
         item.takeUnless { _shoppingCart.items.contains(it) }?.let { _shoppingCart.items.add(it) }
         _shoppingCartLD.value = _shoppingCart
-    }
-
-    fun onNothingClick() {
-        throw IllegalStateException("Please remove nothing component from the showing page")
     }
 
     fun onResetClick() {

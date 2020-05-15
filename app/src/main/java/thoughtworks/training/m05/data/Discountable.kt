@@ -6,7 +6,11 @@ interface Discountable {
 
 class BuyTwoSendOne : Discountable {
 
+    private fun calculateDiscount(sum: Int ): Int{
+       return sum - (sum - sum % 3) / 3
+    }
+
     override fun discount(item: ShoppingCartItem): Float {
-        return item.run { (sum % 2) * goods.price }
+        return item.run { calculateDiscount(sum) * goods.price }
     }
 }
